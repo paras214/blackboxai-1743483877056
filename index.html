@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EE 2023 - Chat & Collaborate</title>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body class="bg-gray-100">
+    <!-- Offline Status Indicator -->
+    <div id="offline-status" class="hidden bg-red-500 text-white p-2 text-center">
+        <i class="fas fa-wifi-slash mr-2"></i>You are currently offline. Changes will sync when connection is restored.
+    </div>
+
+    <!-- Header -->
+    <header class="bg-blue-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-bolt text-yellow-300 text-2xl mr-2"></i>
+                <h1 class="text-2xl font-bold">EE 2023 Chat</h1>
+            </div>
+            <nav class="space-x-4">
+                <a href="contacts.html" class="px-3 py-2 rounded hover:bg-blue-500">
+                    <i class="fas fa-users mr-1"></i>Contacts
+                </a>
+                <a href="chat.html" class="px-3 py-2 rounded hover:bg-blue-500">
+                    <i class="fas fa-comments mr-1"></i>Chat
+                </a>
+                <a href="files.html" class="px-3 py-2 rounded hover:bg-blue-500">
+                    <i class="fas fa-file-upload mr-1"></i>Files
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 md:p-8">
+        <!-- Online/Offline Toggle -->
+        <div class="flex justify-end mb-4">
+            <div class="inline-flex items-center bg-white rounded-full p-1 shadow">
+                <button id="online-btn" class="px-4 py-2 rounded-full bg-blue-500 text-white">
+                    <i class="fas fa-wifi mr-2"></i>Online
+                </button>
+                <button id="offline-btn" class="px-4 py-2 rounded-full">
+                    <i class="fas fa-book mr-2"></i>Offline
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Section -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 border-b">
+                <h2 class="text-xl font-semibold">
+                    <i class="fas fa-comment-dots text-blue-500 mr-2"></i>
+                    Engineering Group Chat
+                </h2>
+            </div>
+            
+            <div id="chat-container" class="h-96 overflow-y-auto p-4 space-y-4">
+                <!-- Messages will appear here -->
+            </div>
+            
+            <div class="p-4 border-t">
+                <div class="flex">
+                    <input type="text" id="message-input" 
+                           class="flex-1 border rounded-l-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                           placeholder="Type your message...">
+                    <button id="send-btn" class="bg-blue-500 text-white px-4 rounded-r-lg hover:bg-blue-600">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="sw-register.js"></script>
+</body>
+</html>
